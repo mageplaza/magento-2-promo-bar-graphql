@@ -1,0 +1,54 @@
+type Query {
+    MpPromoBar(
+        filter: MageplazaPromoBarFilterInput @doc(description: "Identifies which Mageplaza Promo Bar attributes to search for and return."),
+        pageSize: Int = 5 @doc(description: "Number of items should be shown on the page"),
+        currentPage: Int = 1 @doc(description: "Allow page number to start from 1")
+    ):MageplazaPromoBarOutput @resolver(class: "Mageplaza\\PromoBarGraphQl\\Model\\Resolver\\PromoBar") @doc(description: "Queries search for Mageplaza Promo Bar that match the filtered criteria.")
+}
+input MageplazaPromoBarFilterInput {
+    template_id: FilterTypeInput @doc(description: "Promo Bar Id")
+    name: FilterTypeInput @doc(description: "Promo Bar Name")
+    status: FilterTypeInput @doc(description: "Status")
+    position: FilterTypeInput @doc(description: "Deal Price")
+    from_date: FilterTypeInput @doc(description: "Date to start running the promo")
+    to_date: FilterTypeInput @doc(description: "Date to stop running the promo")
+}
+type MageplazaPromoBarOutput {
+    total_count: Int @doc(description: "The total number of results returned when a query is applied"),
+    items: [PromoBar] @doc(description: "Promo Bars data is satisfied")
+}
+
+type PromoBar {
+  template_id: Int @doc(description: "Deal Id")
+  name: String @doc(description: "Product Name")
+  status: Boolean @doc(description: "Status")
+  priority: Int @doc(description: "Qty of items sold")
+  store_ids: String @doc(description: "Store Ids")
+  customer_group_ids: String @doc(description: "Customer Group Ids")
+  category: String @doc(description: "Promo Bar category Id")
+  from_date: String @doc(description: "Date to start running the promo")
+  to_date: String @doc(description: "Date to stop running the promo")
+  created_at: String @doc(description: "Creation date of the promo")
+  updated_at: String @doc(description: "Last modification date of the promo")
+  content: String @doc(description: "Promo Bar content")
+  url_text: String @doc(description: "Url in text")
+  url: String @doc(description: "Url")
+  template_style: String @doc(description: "Promo Bar template style")
+  text_color: String @doc(description: "Text color")
+  background_color: String @doc(description: "Background color")
+  url_text_color: String @doc(description: "Color of text in url")
+  url_background_color: String @doc(description: "Color of background in url")
+  bg_image_url: String @doc(description: "Background Image URL")
+  position: String @doc(description: "Position")
+  page: Int @doc(description: "Promo Bar use on all page or specific pages")
+  page_type: String @doc(description: "Promo Bar use on page types")
+  category_ids: String @doc(description: "Catalog category ids")
+  show_product_page: String @doc(description: "Show promo bar on product detail page")
+  auto_close_time: String @doc(description: "Time closed automatically")
+  auto_reopen_time: String @doc(description: "Time reopen automatically")
+  promo_bar_css: String @doc(description: "The promo bar css")
+}
+
+type Cart {
+    mp_promobar: [PromoBar] @resolver(class: "\\Mageplaza\\PromoBarGraphQl\\Model\\Resolver\\Cart\\CartPromoBar")
+}
