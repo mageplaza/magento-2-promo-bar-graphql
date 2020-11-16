@@ -72,9 +72,11 @@ class CartPromoBar implements ResolverInterface
             }
         }
 
-        $quote      = $cart->collectTotals();
-        $address    = $quote->isVirtual() ? $quote->getBillingAddress() : $quote->getShippingAddress();
-        $collection = $this->helperData->getPromoBarCollection();
+        $quote           = $cart->collectTotals();
+        $address         = $quote->isVirtual() ? $quote->getBillingAddress() : $quote->getShippingAddress();
+        $customerGroupId = $quote->getCustomerGroupId();
+        $storeId         = (int) $context->getExtensionAttributes()->getStore()->getId();
+        $collection      = $this->helperData->getPromoBarCollection($customerGroupId, $storeId);
         foreach ($collection as $item) {
             /** @var Template $item */
             if ($item->validate($address)) {
