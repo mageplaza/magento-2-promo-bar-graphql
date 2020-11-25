@@ -50,6 +50,13 @@ class PromoBar implements ResolverInterface
      */
     protected $promoBarRepository;
 
+    /**
+     * PromoBar constructor.
+     *
+     * @param Data $helperData
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param PromoBarRepositoryInterface $promoBarRepository
+     */
     public function __construct(
         Data $helperData,
         SearchCriteriaBuilder $searchCriteriaBuilder,
