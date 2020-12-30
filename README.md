@@ -37,8 +37,8 @@ To perform GraphQL queries in Magento, please do the following requirements:
 
 ## 3. Devdocs
 
-- [Promo Bar API & examples](https://documenter.getpostman.com/view/10589000/TVKEXxWj)
-- [Promo Bar GraphQL & examples](https://documenter.getpostman.com/view/10589000/TVepA8tv)
+- [Magento 2 Promo Bar API & examples](https://documenter.getpostman.com/view/10589000/TVKEXxWj)
+- [Magento 2 Promo Bar GraphQL & examples](https://documenter.getpostman.com/view/10589000/TVepA8tv)
 
 
 ## 4. Contribute to this module
